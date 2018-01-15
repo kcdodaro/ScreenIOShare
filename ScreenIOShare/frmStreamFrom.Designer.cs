@@ -35,11 +35,18 @@
             this.radAllShare = new System.Windows.Forms.RadioButton();
             this.lstInfo = new System.Windows.Forms.ListBox();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.lblScreenWidth = new System.Windows.Forms.Label();
+            this.lblScreenHeight = new System.Windows.Forms.Label();
+            this.lblIntIPAddress = new System.Windows.Forms.Label();
+            this.grpInfo.SuspendLayout();
             this.grpSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpInfo
             // 
+            this.grpInfo.Controls.Add(this.lblIntIPAddress);
+            this.grpInfo.Controls.Add(this.lblScreenHeight);
+            this.grpInfo.Controls.Add(this.lblScreenWidth);
             this.grpInfo.Location = new System.Drawing.Point(372, 249);
             this.grpInfo.Name = "grpInfo";
             this.grpInfo.Size = new System.Drawing.Size(200, 200);
@@ -110,6 +117,33 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
+            // lblScreenWidth
+            // 
+            this.lblScreenWidth.AutoSize = true;
+            this.lblScreenWidth.Location = new System.Drawing.Point(7, 20);
+            this.lblScreenWidth.Name = "lblScreenWidth";
+            this.lblScreenWidth.Size = new System.Drawing.Size(72, 13);
+            this.lblScreenWidth.TabIndex = 0;
+            this.lblScreenWidth.Text = "Screen width:";
+            // 
+            // lblScreenHeight
+            // 
+            this.lblScreenHeight.AutoSize = true;
+            this.lblScreenHeight.Location = new System.Drawing.Point(7, 33);
+            this.lblScreenHeight.Name = "lblScreenHeight";
+            this.lblScreenHeight.Size = new System.Drawing.Size(76, 13);
+            this.lblScreenHeight.TabIndex = 1;
+            this.lblScreenHeight.Text = "Screen height:";
+            // 
+            // lblIntIPAddress
+            // 
+            this.lblIntIPAddress.AutoSize = true;
+            this.lblIntIPAddress.Location = new System.Drawing.Point(7, 46);
+            this.lblIntIPAddress.Name = "lblIntIPAddress";
+            this.lblIntIPAddress.Size = new System.Drawing.Size(98, 13);
+            this.lblIntIPAddress.TabIndex = 2;
+            this.lblIntIPAddress.Text = "Internal IP address:";
+            // 
             // frmStreamFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,6 +154,9 @@
             this.Controls.Add(this.grpInfo);
             this.Name = "frmStreamFrom";
             this.Text = "frmStreamFrom";
+            this.Load += new System.EventHandler(this.frmStreamFrom_Load);
+            this.grpInfo.ResumeLayout(false);
+            this.grpInfo.PerformLayout();
             this.grpSettings.ResumeLayout(false);
             this.grpSettings.PerformLayout();
             this.ResumeLayout(false);
@@ -135,5 +172,8 @@
         private System.Windows.Forms.RadioButton radScreenOnly;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.ListBox lstInfo;
+        private System.Windows.Forms.Label lblIntIPAddress;
+        private System.Windows.Forms.Label lblScreenHeight;
+        private System.Windows.Forms.Label lblScreenWidth;
     }
 }

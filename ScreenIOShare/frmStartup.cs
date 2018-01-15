@@ -16,5 +16,17 @@ namespace ScreenIOShare
         {
             InitializeComponent();
         }
+
+        private void btnStreamFrom_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form streamFrom = new frmStreamFrom();
+            streamFrom.Show();
+        }
+
+        private void btnStreamTo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
