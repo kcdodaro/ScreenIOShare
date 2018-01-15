@@ -45,6 +45,9 @@ namespace ScreenIOShare
                     //picScreenOutput.Image = screen;
 
                     Thread.Sleep(15);
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    GC.Collect();
                 }
                 catch
                 {

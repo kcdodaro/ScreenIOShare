@@ -35,6 +35,9 @@
             // 
             // picScreenOutput
             // 
+            this.picScreenOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picScreenOutput.Location = new System.Drawing.Point(12, 12);
             this.picScreenOutput.Name = "picScreenOutput";
             this.picScreenOutput.Size = new System.Drawing.Size(100, 50);
