@@ -82,6 +82,12 @@
     <Compile Include="frmStreamFrom.Designer.cs">
       <DependentUpon>frmStreamFrom.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmStreamTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStreamTo.Designer.cs">
+      <DependentUpon>frmStreamTo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmScreenOutput.resx">
@@ -92,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmStreamFrom.resx">
       <DependentUpon>frmStreamFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStreamTo.resx">
+      <DependentUpon>frmStreamTo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

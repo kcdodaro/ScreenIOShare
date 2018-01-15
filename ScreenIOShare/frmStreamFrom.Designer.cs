@@ -39,12 +39,14 @@
             this.lblScreenHeight = new System.Windows.Forms.Label();
             this.lblIntIPAddress = new System.Windows.Forms.Label();
             this.lblExtIPAddress = new System.Windows.Forms.Label();
+            this.lblPort = new System.Windows.Forms.Label();
             this.grpInfo.SuspendLayout();
             this.grpSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpInfo
             // 
+            this.grpInfo.Controls.Add(this.lblPort);
             this.grpInfo.Controls.Add(this.lblExtIPAddress);
             this.grpInfo.Controls.Add(this.lblIntIPAddress);
             this.grpInfo.Controls.Add(this.lblScreenHeight);
@@ -155,6 +157,15 @@
             this.lblExtIPAddress.TabIndex = 3;
             this.lblExtIPAddress.Text = "External IP address:";
             // 
+            // lblPort
+            // 
+            this.lblPort.AutoSize = true;
+            this.lblPort.Location = new System.Drawing.Point(7, 72);
+            this.lblPort.Name = "lblPort";
+            this.lblPort.Size = new System.Drawing.Size(29, 13);
+            this.lblPort.TabIndex = 4;
+            this.lblPort.Text = "Port:";
+            // 
             // frmStreamFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,5 +198,6 @@
         private System.Windows.Forms.Label lblScreenHeight;
         private System.Windows.Forms.Label lblScreenWidth;
         private System.Windows.Forms.Label lblExtIPAddress;
+        private System.Windows.Forms.Label lblPort;
     }
 }

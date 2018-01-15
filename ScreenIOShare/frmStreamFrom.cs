@@ -19,7 +19,7 @@ namespace ScreenIOShare
         #region globals
         double dblScreenHeight;
         double dblScreenWidth;
-        double dblPort;
+        double dblPort = 13336;
         string strExtIPAddress;
         string strIntIPAddress;
         #endregion
@@ -46,6 +46,7 @@ namespace ScreenIOShare
             lblScreenWidth.Text += dblScreenWidth;
             lblIntIPAddress.Text += strIntIPAddress;
             lblExtIPAddress.Text += strExtIPAddress;
+            lblPort.Text += dblPort;
         }
 
         string getIntIPAddress()

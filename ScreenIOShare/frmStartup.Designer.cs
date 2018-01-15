@@ -49,6 +49,7 @@
             this.btnStreamTo.Name = "btnStreamTo";
             this.btnStreamTo.Size = new System.Drawing.Size(133, 23);
             this.btnStreamTo.TabIndex = 1;
+            this.btnStreamTo.TabStop = false;
             this.btnStreamTo.Text = "Stream to this machine";
             this.btnStreamTo.UseVisualStyleBackColor = true;
             this.btnStreamTo.Click += new System.EventHandler(this.btnStreamTo_Click);

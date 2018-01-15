@@ -35,31 +35,28 @@ namespace ScreenIOShare
                     Bitmap image = new Bitmap((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight);
                     Size s = new Size(image.Width, image.Height);
 
-                    //Graphics graphics = Graphics.FromImage(image);
                     Graphics graphics = picScreenOutput.CreateGraphics();
                     graphics.CopyFromScreen(0, 0, 0, 0, s);
-
-
-                    //Bitmap screen = new Bitmap((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight, graphics);
-
-                    //picScreenOutput.Image = screen;
 
                     Thread.Sleep(15);
                     GC.Collect();
                     GC.WaitForPendingFinalizers();
                     GC.Collect();
                 }
-                catch
+                catch (Exception e)
                 {
-
+                    
                 }     
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            picScreenOutput.Width = (int)SystemParameters.VirtualScreenWidth / 2;
-            picScreenOutput.Height = (int)SystemParameters.VirtualScreenHeight / 2;
+            //Size s = new Size((int)SystemParameters.VirtualScreenWidth / 2, (int)SystemParameters.VirtualScreenHeight / 2);
+            picScreenOutput.Width = (int)SystemParameters.VirtualScreenWidth;
+            picScreenOutput.Height = (int)SystemParameters.VirtualScreenHeight;
+            //picScreenOutput.MaximumSize = s;
+            //picScreenOutput.Size = s;
 
             Thread sc = new Thread(captureScreen);
             sc.Start();
