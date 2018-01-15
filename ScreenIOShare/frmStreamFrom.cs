@@ -31,6 +31,8 @@ namespace ScreenIOShare
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            txtInfo.Enabled = true;
+            txtInfo.Text += "Give this key to the receiving computer: " + createKey();
             Form screen = new frmScreenOutput();
             screen.Show();
         }
@@ -108,6 +110,19 @@ namespace ScreenIOShare
             }
 
             return ExtIPAddress;
+        }
+
+        string createKey()
+        {
+            string strKey = null;
+            Random r = new Random();
+
+            for (int i = 0; i < 250; i++)
+            {
+                strKey += r.Next(0, 10).ToString();
+            }
+
+            return strKey;
         }
     }
 }

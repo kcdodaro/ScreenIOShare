@@ -37,6 +37,14 @@
             this.lblIntIPAddress = new System.Windows.Forms.Label();
             this.lblScreenHeight = new System.Windows.Forms.Label();
             this.lblScreenWidth = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtExtIP = new System.Windows.Forms.TextBox();
+            this.txtIntIP = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPort = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtKey = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.grpSettings.SuspendLayout();
             this.grpInfo.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +60,14 @@
             // 
             // grpSettings
             // 
+            this.grpSettings.Controls.Add(this.label4);
+            this.grpSettings.Controls.Add(this.txtKey);
+            this.grpSettings.Controls.Add(this.label3);
+            this.grpSettings.Controls.Add(this.txtPort);
+            this.grpSettings.Controls.Add(this.label2);
+            this.grpSettings.Controls.Add(this.txtIntIP);
+            this.grpSettings.Controls.Add(this.txtExtIP);
+            this.grpSettings.Controls.Add(this.label1);
             this.grpSettings.Controls.Add(this.btnSubmit);
             this.grpSettings.Location = new System.Drawing.Point(12, 12);
             this.grpSettings.Name = "grpSettings";
@@ -128,6 +144,71 @@
             this.lblScreenWidth.TabIndex = 0;
             this.lblScreenWidth.Text = "Screen width:";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "External IP address";
+            // 
+            // txtExtIP
+            // 
+            this.txtExtIP.Location = new System.Drawing.Point(111, 17);
+            this.txtExtIP.Name = "txtExtIP";
+            this.txtExtIP.Size = new System.Drawing.Size(100, 20);
+            this.txtExtIP.TabIndex = 5;
+            // 
+            // txtIntIP
+            // 
+            this.txtIntIP.Location = new System.Drawing.Point(111, 43);
+            this.txtIntIP.Name = "txtIntIP";
+            this.txtIntIP.Size = new System.Drawing.Size(100, 20);
+            this.txtIntIP.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Internal IP address";
+            // 
+            // txtPort
+            // 
+            this.txtPort.Location = new System.Drawing.Point(111, 69);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(100, 20);
+            this.txtPort.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(70, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Port";
+            // 
+            // txtKey
+            // 
+            this.txtKey.Location = new System.Drawing.Point(16, 110);
+            this.txtKey.Multiline = true;
+            this.txtKey.Name = "txtKey";
+            this.txtKey.Size = new System.Drawing.Size(195, 112);
+            this.txtKey.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 94);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Key";
+            // 
             // frmStreamTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +220,7 @@
             this.Name = "frmStreamTo";
             this.Text = "frmStreamTo";
             this.grpSettings.ResumeLayout(false);
+            this.grpSettings.PerformLayout();
             this.grpInfo.ResumeLayout(false);
             this.grpInfo.PerformLayout();
             this.ResumeLayout(false);
@@ -156,5 +238,13 @@
         private System.Windows.Forms.Label lblIntIPAddress;
         private System.Windows.Forms.Label lblScreenHeight;
         private System.Windows.Forms.Label lblScreenWidth;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtKey;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtPort;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtIntIP;
+        private System.Windows.Forms.TextBox txtExtIP;
+        private System.Windows.Forms.Label label1;
     }
 }

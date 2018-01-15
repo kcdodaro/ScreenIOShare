@@ -33,13 +33,13 @@
             this.radScreenOnly = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.radAllShare = new System.Windows.Forms.RadioButton();
-            this.lstInfo = new System.Windows.Forms.ListBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.lblScreenWidth = new System.Windows.Forms.Label();
             this.lblScreenHeight = new System.Windows.Forms.Label();
             this.lblIntIPAddress = new System.Windows.Forms.Label();
             this.lblExtIPAddress = new System.Windows.Forms.Label();
             this.lblPort = new System.Windows.Forms.Label();
+            this.txtInfo = new System.Windows.Forms.TextBox();
             this.grpInfo.SuspendLayout();
             this.grpSettings.SuspendLayout();
             this.SuspendLayout();
@@ -102,15 +102,6 @@
             this.radAllShare.Text = "Screen and IO Share";
             this.radAllShare.UseVisualStyleBackColor = true;
             // 
-            // lstInfo
-            // 
-            this.lstInfo.Enabled = false;
-            this.lstInfo.FormattingEnabled = true;
-            this.lstInfo.Location = new System.Drawing.Point(12, 249);
-            this.lstInfo.Name = "lstInfo";
-            this.lstInfo.Size = new System.Drawing.Size(354, 199);
-            this.lstInfo.TabIndex = 2;
-            // 
             // btnSubmit
             // 
             this.btnSubmit.Location = new System.Drawing.Point(479, 202);
@@ -166,12 +157,22 @@
             this.lblPort.TabIndex = 4;
             this.lblPort.Text = "Port:";
             // 
+            // txtInfo
+            // 
+            this.txtInfo.Enabled = false;
+            this.txtInfo.Location = new System.Drawing.Point(12, 249);
+            this.txtInfo.Multiline = true;
+            this.txtInfo.Name = "txtInfo";
+            this.txtInfo.ReadOnly = true;
+            this.txtInfo.Size = new System.Drawing.Size(354, 200);
+            this.txtInfo.TabIndex = 2;
+            // 
             // frmStreamFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 461);
-            this.Controls.Add(this.lstInfo);
+            this.Controls.Add(this.txtInfo);
             this.Controls.Add(this.grpSettings);
             this.Controls.Add(this.grpInfo);
             this.Name = "frmStreamFrom";
@@ -182,6 +183,7 @@
             this.grpSettings.ResumeLayout(false);
             this.grpSettings.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -193,11 +195,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radScreenOnly;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.ListBox lstInfo;
         private System.Windows.Forms.Label lblIntIPAddress;
         private System.Windows.Forms.Label lblScreenHeight;
         private System.Windows.Forms.Label lblScreenWidth;
         private System.Windows.Forms.Label lblExtIPAddress;
         private System.Windows.Forms.Label lblPort;
+        private System.Windows.Forms.TextBox txtInfo;
     }
 }
