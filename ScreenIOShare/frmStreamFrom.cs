@@ -31,7 +31,8 @@ namespace ScreenIOShare
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
+            Form screen = new frmScreenOutput();
+            screen.Show();
         }
 
         private void frmStreamFrom_Load(object sender, EventArgs e)

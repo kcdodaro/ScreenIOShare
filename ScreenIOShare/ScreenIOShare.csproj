@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmScreenOutput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmScreenOutput.Designer.cs">
+      <DependentUpon>frmScreenOutput.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStartup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmScreenOutput.resx">
+      <DependentUpon>frmScreenOutput.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmStartup.resx">
       <DependentUpon>frmStartup.cs</DependentUpon>
     </EmbeddedResource>
