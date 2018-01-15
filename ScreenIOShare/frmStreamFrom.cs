@@ -92,13 +92,17 @@ namespace ScreenIOShare
                 
                 for(int i = 0; i < response.Count(); i++)
                 {
-                    if (!(Char.IsDigit(response[i])) || response[i] != '.')
+                    if (!(Char.IsDigit(response[i])) && response[i] != '.')
                     {
                         response.RemoveAt(i);
+                        i = -1;
                     }
                 }
 
-                ExtIPAddress = response.ToString();
+                for (int i = 0; i < response.Count(); i++)
+                {
+                    ExtIPAddress += response[i];
+                }
             }
 
             return ExtIPAddress;
