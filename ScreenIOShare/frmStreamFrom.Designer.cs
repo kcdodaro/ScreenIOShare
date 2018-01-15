@@ -38,12 +38,14 @@
             this.lblScreenWidth = new System.Windows.Forms.Label();
             this.lblScreenHeight = new System.Windows.Forms.Label();
             this.lblIntIPAddress = new System.Windows.Forms.Label();
+            this.lblExtIPAddress = new System.Windows.Forms.Label();
             this.grpInfo.SuspendLayout();
             this.grpSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpInfo
             // 
+            this.grpInfo.Controls.Add(this.lblExtIPAddress);
             this.grpInfo.Controls.Add(this.lblIntIPAddress);
             this.grpInfo.Controls.Add(this.lblScreenHeight);
             this.grpInfo.Controls.Add(this.lblScreenWidth);
@@ -144,6 +146,15 @@
             this.lblIntIPAddress.TabIndex = 2;
             this.lblIntIPAddress.Text = "Internal IP address:";
             // 
+            // lblExtIPAddress
+            // 
+            this.lblExtIPAddress.AutoSize = true;
+            this.lblExtIPAddress.Location = new System.Drawing.Point(7, 59);
+            this.lblExtIPAddress.Name = "lblExtIPAddress";
+            this.lblExtIPAddress.Size = new System.Drawing.Size(101, 13);
+            this.lblExtIPAddress.TabIndex = 3;
+            this.lblExtIPAddress.Text = "External IP address:";
+            // 
             // frmStreamFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,5 +186,6 @@
         private System.Windows.Forms.Label lblIntIPAddress;
         private System.Windows.Forms.Label lblScreenHeight;
         private System.Windows.Forms.Label lblScreenWidth;
+        private System.Windows.Forms.Label lblExtIPAddress;
     }
 }
