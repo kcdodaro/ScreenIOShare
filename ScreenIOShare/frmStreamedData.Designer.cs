@@ -138,6 +138,7 @@
             this.MainMenuStrip = this.mnuOptions;
             this.Name = "frmStreamedData";
             this.Text = "frmStreamedData";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmStreamedData_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.picOutput)).EndInit();
             this.mnuOptions.ResumeLayout(false);
             this.mnuOptions.PerformLayout();

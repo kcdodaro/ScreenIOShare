@@ -7,11 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows;
 
 namespace ScreenIOShare
 {
     public partial class frmStreamedData : Form
     {
+        #region globals
+        bool blIsStreaming = false;
+        int nativeScreenWidth = (int)SystemParameters.VirtualScreenWidth;
+        int nativeScreenHeight = (int)SystemParameters.VirtualScreenHeight;
+        int streamedScreenWidth;
+        int streamedScreenHeight;
+        #endregion
+
         public frmStreamedData()
         {
             InitializeComponent();
@@ -47,6 +56,23 @@ namespace ScreenIOShare
         {
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.WindowState = FormWindowState.Normal;
+        }
+
+        private void frmStreamedData_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F8)
+            {
+                if (mnuOptions.Enabled == false && mnuOptions.Visible == false)
+                {
+                    mnuOptions.Enabled = true;
+                    mnuOptions.Visible = true;
+                }
+                else
+                {
+                    mnuOptions.Enabled = false;
+                    mnuOptions.Visible = false;
+                }
+            }
         }
     }
 }

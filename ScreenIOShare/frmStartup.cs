@@ -21,14 +21,14 @@ namespace ScreenIOShare
         {         
             Form streamFrom = new frmStreamFrom();
             streamFrom.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void btnStreamTo_Click(object sender, EventArgs e)
         {
             Form streamTo = new frmStreamTo();
             streamTo.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

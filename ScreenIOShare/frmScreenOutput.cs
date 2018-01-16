@@ -16,6 +16,11 @@ namespace ScreenIOShare
 {
     public partial class frmScreenOutput : Form
     {
+        #region globals
+        int intFPS = 0;
+        int intFPSCounter = 0;
+        #endregion
+
         public frmScreenOutput()
         {
             InitializeComponent();
@@ -38,6 +43,8 @@ namespace ScreenIOShare
                     Graphics graphics = picScreenOutput.CreateGraphics();
                     graphics.CopyFromScreen(0, 0, 0, 0, s);
 
+                    intFPSCounter++;
+
                     Thread.Sleep(15);
                     GC.Collect();
                     GC.WaitForPendingFinalizers();
@@ -45,9 +52,24 @@ namespace ScreenIOShare
                 }
                 catch (Exception e)
                 {
-                    
+                    //insert error logging here
                 }     
             }
+        }
+
+        void countFPS()
+        {
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000;
+            timer.Start();
+
+            timer.Tick += new EventHandler(updateFPS);
+        }
+
+        void updateFPS(object sender, EventArgs e)
+        {
+            intFPS = intFPSCounter;
+            intFPSCounter = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -60,6 +82,9 @@ namespace ScreenIOShare
 
             Thread sc = new Thread(captureScreen);
             sc.Start();
+
+            Thread fps = new Thread(countFPS);
+            fps.Start();
         }
     }
 }
