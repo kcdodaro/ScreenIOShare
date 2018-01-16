@@ -76,6 +76,12 @@
     <Compile Include="frmStartup.Designer.cs">
       <DependentUpon>frmStartup.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmStreamedData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStreamedData.Designer.cs">
+      <DependentUpon>frmStreamedData.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStreamFrom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmStartup.resx">
       <DependentUpon>frmStartup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStreamedData.resx">
+      <DependentUpon>frmStreamedData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStreamFrom.resx">
       <DependentUpon>frmStreamFrom.cs</DependentUpon>
