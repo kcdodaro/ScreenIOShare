@@ -30,6 +30,7 @@
         {
             this.picScreenOutput = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblFPS = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picScreenOutput)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,11 +57,21 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lblFPS
+            // 
+            this.lblFPS.AutoSize = true;
+            this.lblFPS.Location = new System.Drawing.Point(0, -1);
+            this.lblFPS.Name = "lblFPS";
+            this.lblFPS.Size = new System.Drawing.Size(33, 13);
+            this.lblFPS.TabIndex = 2;
+            this.lblFPS.Text = "FPS: ";
+            // 
             // frmScreenOutput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1115, 637);
+            this.Controls.Add(this.lblFPS);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.picScreenOutput);
             this.Name = "frmScreenOutput";
@@ -68,6 +79,7 @@
             this.Load += new System.EventHandler(this.frmScreenOutput_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picScreenOutput)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -75,5 +87,6 @@
 
         private System.Windows.Forms.PictureBox picScreenOutput;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblFPS;
     }
 }

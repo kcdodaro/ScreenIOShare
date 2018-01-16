@@ -70,6 +70,7 @@ namespace ScreenIOShare
         {
             intFPS = intFPSCounter;
             intFPSCounter = 0;
+            lblFPS.Text += intFPS;
         }
 
         private void button1_Click(object sender, EventArgs e)
