@@ -27,11 +27,6 @@ namespace ScreenIOShare
 
         }
 
-        private void fullscreenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void maxAllowedResolutionToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -39,7 +34,19 @@ namespace ScreenIOShare
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void enterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }

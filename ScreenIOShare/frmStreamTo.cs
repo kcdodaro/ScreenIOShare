@@ -30,7 +30,8 @@ namespace ScreenIOShare
                 success = attemptConnection(strExternalIP, strInternalIP, strPort, strKey);
                 if (success)
                 {
-
+                    Form streamedData = new frmStreamedData();
+                    streamedData.Show();
                 }
             }
             else
@@ -41,7 +42,7 @@ namespace ScreenIOShare
 
         bool attemptConnection(string ExternalIP, string InternalIP, string Port, string Key)
         {
-
+            return true;
         }
     }
 }
