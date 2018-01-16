@@ -16,5 +16,32 @@ namespace ScreenIOShare
         {
             InitializeComponent();
         }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string strExternalIP = txtExtIP.Text;
+            string strInternalIP = txtIntIP.Text;
+            string strPort = txtPort.Text;
+            string strKey = txtKey.Text;
+            bool success = false;
+
+            if (strExternalIP != "" && strInternalIP != "" && strPort != "" && strKey != "")
+            {
+                success = attemptConnection(strExternalIP, strInternalIP, strPort, strKey);
+                if (success)
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Not all required information was entered. Ensure that you have put information in all boxes.");
+            }
+        }
+
+        bool attemptConnection(string ExternalIP, string InternalIP, string Port, string Key)
+        {
+
+        }
     }
 }
