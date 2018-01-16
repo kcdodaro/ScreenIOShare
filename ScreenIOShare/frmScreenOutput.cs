@@ -45,7 +45,7 @@ namespace ScreenIOShare
 
                     intFPSCounter++;
 
-                    Thread.Sleep(15);
+                    Thread.Sleep(1);
                     GC.Collect();
                     GC.WaitForPendingFinalizers();
                     GC.Collect();
@@ -61,6 +61,7 @@ namespace ScreenIOShare
         {
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Interval = 1000;
+            timer.Enabled = true;
             timer.Start();
 
             timer.Tick += new EventHandler(updateFPS);
@@ -70,7 +71,7 @@ namespace ScreenIOShare
         {
             intFPS = intFPSCounter;
             intFPSCounter = 0;
-            lblFPS.Text += intFPS;
+            lblFPS.Text = "FPS: " + intFPS;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -84,8 +85,15 @@ namespace ScreenIOShare
             Thread sc = new Thread(captureScreen);
             sc.Start();
 
-            Thread fps = new Thread(countFPS);
-            fps.Start();
+            //Thread fps = new Thread(countFPS);
+            //fps.Start();
+
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000;
+            timer.Enabled = true;
+            timer.Start();
+
+            timer.Tick += new EventHandler(updateFPS);
         }
     }
 }
