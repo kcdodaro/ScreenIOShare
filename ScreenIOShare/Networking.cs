@@ -93,9 +93,31 @@ namespace ScreenIOShare
             }
         }
 
-        void receiveData()
+        void clientConnect(string Address, string port)
         {
+            double ip = 0;
+            int intPort = 0;
 
+            try
+            {
+                intPort = int.Parse(port);
+            }
+            catch (Exception e)
+            {
+                //logging here
+            }
+
+            //bool isNumeric = double.TryParse(Address, out ip);
+
+            /*if (isNumeric)
+            {
+                TcpClient client = new TcpClient();
+                client.Connect(IPAddress.Parse(Address), intPort);
+            }*/
+
+            TcpClient client = new TcpClient();
+            client.Connect(Address, intPort);
+            //insert logging here of connection event
         }
 
         void handleData()

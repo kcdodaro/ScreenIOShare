@@ -45,6 +45,7 @@
             this.lblIntIPAddress = new System.Windows.Forms.Label();
             this.lblScreenHeight = new System.Windows.Forms.Label();
             this.lblScreenWidth = new System.Windows.Forms.Label();
+            this.lblIsConnected = new System.Windows.Forms.Label();
             this.grpSettings.SuspendLayout();
             this.grpInfo.SuspendLayout();
             this.SuspendLayout();
@@ -153,6 +154,7 @@
             // 
             // grpInfo
             // 
+            this.grpInfo.Controls.Add(this.lblIsConnected);
             this.grpInfo.Controls.Add(this.lblPort);
             this.grpInfo.Controls.Add(this.lblExtIPAddress);
             this.grpInfo.Controls.Add(this.lblIntIPAddress);
@@ -210,6 +212,15 @@
             this.lblScreenWidth.TabIndex = 0;
             this.lblScreenWidth.Text = "Screen width:";
             // 
+            // lblIsConnected
+            // 
+            this.lblIsConnected.AutoSize = true;
+            this.lblIsConnected.Location = new System.Drawing.Point(7, 85);
+            this.lblIsConnected.Name = "lblIsConnected";
+            this.lblIsConnected.Size = new System.Drawing.Size(62, 13);
+            this.lblIsConnected.TabIndex = 5;
+            this.lblIsConnected.Text = "Connected:";
+            // 
             // frmStreamTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,5 +259,6 @@
         private System.Windows.Forms.TextBox txtIntIP;
         private System.Windows.Forms.TextBox txtExtIP;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblIsConnected;
     }
 }
