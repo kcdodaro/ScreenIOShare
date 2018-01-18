@@ -46,77 +46,19 @@ namespace ScreenIOShare
 
         private void frmStreamFrom_Load(object sender, EventArgs e)
         {
+            Standards st = new Standards();
+            Networking nt = new Networking();
+
             dblScreenHeight = SystemParameters.VirtualScreenHeight;
             dblScreenWidth = SystemParameters.VirtualScreenWidth;
-            strIntIPAddress = getIntIPAddress();
-            strExtIPAddress = getExtIPAddress();
+            strIntIPAddress = nt.getInternalIPAddress().ToString();
+            strExtIPAddress = nt.getExternalIPAddress().ToString();
 
             lblScreenHeight.Text += dblScreenHeight;
             lblScreenWidth.Text += dblScreenWidth;
             lblIntIPAddress.Text += strIntIPAddress;
             lblExtIPAddress.Text += strExtIPAddress;
             lblPort.Text += dblPort;
-        }
-
-        string getIntIPAddress()
-        {
-            string strIP = null;
-
-            var HostName = Dns.GetHostEntry(Dns.GetHostName());
-
-            foreach (var ip in HostName.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    strIP = ip.ToString();
-                    break;
-                }
-                else
-                {
-                    strIP = "Error";
-                }
-            }
-
-            if (strIP != "Error")
-            {
-                return strIP;
-            }
-            else
-            {
-                System.Windows.MessageBox.Show("No internal IP addresses found. Are you connected to the internet?");
-                return null;
-            }
-        }
-
-        string getExtIPAddress()
-        {
-            string ExtIPAddress = null;
-
-            WebRequest WRrequest = WebRequest.Create("http://checkip.dyndns.org");
-            WebResponse WRresponse = WRrequest.GetResponse();
-            using (Stream st = WRresponse.GetResponseStream())
-            { 
-                StreamReader sr = new StreamReader(st);
-                string strResponse = sr.ReadToEnd().Trim();
-
-                List<char> response = strResponse.ToList<char>();
-                
-                for(int i = 0; i < response.Count(); i++)
-                {
-                    if (!(Char.IsDigit(response[i])) && response[i] != '.')
-                    {
-                        response.RemoveAt(i);
-                        i = -1;
-                    }
-                }
-
-                for (int i = 0; i < response.Count(); i++)
-                {
-                    ExtIPAddress += response[i];
-                }
-            }
-
-            return ExtIPAddress;
         }
 
         string createKey()
