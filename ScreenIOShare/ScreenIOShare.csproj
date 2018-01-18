@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\InternalIPNotFound.cs" />
+    <Compile Include="Exceptions\NoServerConnection.cs" />
     <Compile Include="frmScreenOutput.cs">
       <SubType>Form</SubType>
     </Compile>

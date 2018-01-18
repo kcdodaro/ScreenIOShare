@@ -93,7 +93,7 @@ namespace ScreenIOShare
             }
         }
 
-        void clientConnect(string Address, string port)
+        public void clientConnect(string Address, string port)
         {
             double ip = 0;
             int intPort = 0;
@@ -115,9 +115,17 @@ namespace ScreenIOShare
                 client.Connect(IPAddress.Parse(Address), intPort);
             }*/
 
-            TcpClient client = new TcpClient();
-            client.Connect(Address, intPort);
-            //insert logging here of connection event
+            try
+            {
+                TcpClient client = new TcpClient();
+                client.Connect(Address, intPort);
+                //insert logging here of connection event
+            }
+            catch
+            {
+
+            }
+            
         }
 
         void handleData()
