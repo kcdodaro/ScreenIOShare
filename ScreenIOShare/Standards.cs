@@ -21,5 +21,8 @@ namespace ScreenIOShare
         public int ScreenHeight = (int)SystemParameters.VirtualScreenHeight;
         public int ScreenWidth = (int)SystemParameters.VirtualScreenWidth;
         public int Port = 8080;
+        public static string configFolderLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "KCDev//ScreenIOShare//";
+        public static string configFileLocation = configFolderLocation + "config.txt";
+        public string logFileLocation = configFolderLocation + "log.txt";
     }
 }
