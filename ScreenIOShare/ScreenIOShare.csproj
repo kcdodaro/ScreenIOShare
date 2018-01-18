@@ -94,6 +94,7 @@
     <Compile Include="frmStreamTo.Designer.cs">
       <DependentUpon>frmStreamTo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Networking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmScreenOutput.resx">
