@@ -46,8 +46,10 @@
             this.lblScreenHeight = new System.Windows.Forms.Label();
             this.lblScreenWidth = new System.Windows.Forms.Label();
             this.lblIsConnected = new System.Windows.Forms.Label();
+            this.picTest = new System.Windows.Forms.PictureBox();
             this.grpSettings.SuspendLayout();
             this.grpInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTest)).BeginInit();
             this.SuspendLayout();
             // 
             // lstInfo
@@ -61,6 +63,7 @@
             // 
             // grpSettings
             // 
+            this.grpSettings.Controls.Add(this.picTest);
             this.grpSettings.Controls.Add(this.label4);
             this.grpSettings.Controls.Add(this.txtKey);
             this.grpSettings.Controls.Add(this.label3);
@@ -221,6 +224,14 @@
             this.lblIsConnected.TabIndex = 5;
             this.lblIsConnected.Text = "Connected:";
             // 
+            // picTest
+            // 
+            this.picTest.Location = new System.Drawing.Point(249, 17);
+            this.picTest.Name = "picTest";
+            this.picTest.Size = new System.Drawing.Size(305, 179);
+            this.picTest.TabIndex = 12;
+            this.picTest.TabStop = false;
+            // 
             // frmStreamTo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,6 +247,7 @@
             this.grpSettings.PerformLayout();
             this.grpInfo.ResumeLayout(false);
             this.grpInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTest)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -260,5 +272,6 @@
         private System.Windows.Forms.TextBox txtExtIP;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblIsConnected;
+        private System.Windows.Forms.PictureBox picTest;
     }
 }

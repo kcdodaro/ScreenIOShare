@@ -19,6 +19,7 @@ namespace ScreenIOShare
     class Networking
     {
         public bool isConnected { get; set; }
+        public TcpClient client = new TcpClient();
 
         public string getInternalIPAddress()
         {
@@ -79,15 +80,24 @@ namespace ScreenIOShare
             return ExtIPAddress;
         }
 
-        public void sendData(Bitmap image)
+        public void sendData(Bitmap image, string port)
         {
             try
             {
+                //MemoryStream ms = new MemoryStream();
+                //image.Save(ms, ImageFormat.Png);
+
+                //byte[] buffer = new byte[ms.Length];
+                //ms.Read(buffer, 0, (int)ms.Length);
+                int intPort = int.Parse(port);
+                TcpListener server = new TcpListener(IPAddress.Any, intPort);
+                TcpClient client = server.AcceptTcpClient();
+
                 MemoryStream ms = new MemoryStream();
                 image.Save(ms, ImageFormat.Png);
-
-                byte[] buffer = new byte[ms.Length];
-                ms.Read(buffer, 0, (int)ms.Length);
+                byte[] buffer = ms.ToArray();
+                client.Client.Send(buffer);
+                client.Close();
             }
             catch (Exception e)
             {
@@ -119,7 +129,6 @@ namespace ScreenIOShare
 
             try
             {
-                TcpClient client = new TcpClient();
                 client.Connect(Address, intPort);
                 isConnected = true;
                 //insert logging here of connection event
@@ -131,9 +140,13 @@ namespace ScreenIOShare
             
         }
 
-        public void receiveData()
+        public Image receiveData()
         {
-
+            NetworkStream ns = client.GetStream();
+            Image receivedImage = Bitmap.FromStream(ns);
+            //byte[] receivedData = 
+            //ns.Write(receivedData, 0, receivedData.Length);
+            return receivedImage;
         }
 
         public void handleData()

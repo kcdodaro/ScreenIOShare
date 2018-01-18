@@ -44,7 +44,8 @@ namespace ScreenIOShare
 
             //Thread listener = new Thread(send);
             //listener.Start();
-            sentImage = captureScreen();
+            //sentImage = captureScreen();
+            nt.sendData(captureScreen(), st.Port.ToString());
         }
 
         private void frmStreamFrom_Load(object sender, EventArgs e)

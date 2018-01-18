@@ -23,6 +23,8 @@ namespace ScreenIOShare
         string strInternalIP;
         string strPort;
         string strKey;
+        Networking nt = new Networking();
+        Standards st = new Standards();
         #endregion
 
         public frmStreamTo()
@@ -32,7 +34,7 @@ namespace ScreenIOShare
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            sockets = new ArrayList();
+            //sockets = new ArrayList();
             strExternalIP = txtExtIP.Text;
             strInternalIP = txtIntIP.Text;
             strPort = txtPort.Text;
@@ -41,14 +43,17 @@ namespace ScreenIOShare
 
             if (strExternalIP != "" && strInternalIP != "" && strPort != "" && strKey != "")
             {
-                Thread tlisten = new Thread(listener);
-                tlisten.Start();
+                //Thread tlisten = new Thread(listener);
+                //tlisten.Start();
 
                 /*if (success)
                 {
                     Form streamedData = new frmStreamedData();
                     streamedData.Show();
                 }*/
+
+                nt.clientConnect(strExternalIP, strPort);
+                picTest.Image = nt.receiveData();
             }
             else
             {
