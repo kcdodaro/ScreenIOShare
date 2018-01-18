@@ -36,7 +36,14 @@ namespace ScreenIOShare
                 }
             }
 
-            return InternalIP;
+            if (InternalIP != null)
+            {
+                return InternalIP;
+            }
+            else
+            {
+                throw new InternalIPNotFound();
+            }
         }
 
         public string getExternalIPAddress()
