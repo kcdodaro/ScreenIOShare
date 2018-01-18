@@ -130,7 +130,13 @@ namespace ScreenIOShare
         private void frmStreamTo_Load(object sender, EventArgs e)
         {
             Standards st = new Standards();
+            Networking nt = new Networking();
+
             lblScreenHeight.Text = st.ScreenHeight.ToString();
+            lblScreenWidth.Text = st.ScreenWidth.ToString();
+            lblPort.Text = st.Port.ToString();
+            lblExtIPAddress.Text = nt.getExternalIPAddress();
+            lblIntIPAddress.Text = nt.getInternalIPAddress();
         }
     }
 }

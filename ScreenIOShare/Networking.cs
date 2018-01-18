@@ -18,7 +18,7 @@ namespace ScreenIOShare
 {
     class Networking
     {
-        string getInternalIPAddress()
+        public string getInternalIPAddress()
         {
             var hostName = Dns.GetHostEntry(Dns.GetHostName());
             string InternalIP = null;
@@ -40,7 +40,7 @@ namespace ScreenIOShare
             return InternalIP;
         }
 
-        string getExternalIPAddress()
+        public string getExternalIPAddress()
         {
             string ExtIPAddress = null;
 
