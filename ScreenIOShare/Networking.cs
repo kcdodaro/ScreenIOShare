@@ -13,6 +13,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Drawing.Imaging;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ScreenIOShare
 {
@@ -80,9 +82,9 @@ namespace ScreenIOShare
             return ExtIPAddress;
         }
 
-        public void sendData(Bitmap image, string port)
+        public void sendData(Bitmap image, string address, string port)
         {
-            try
+            /*try
             {
                 //MemoryStream ms = new MemoryStream();
                 //image.Save(ms, ImageFormat.Png);
@@ -102,6 +104,40 @@ namespace ScreenIOShare
             catch (Exception e)
             {
                 //insert logging here
+            }*/
+            int intPort = 0;
+
+            try
+            {
+                intPort = int.Parse(port);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            TcpClient client = new TcpClient();
+            try
+            {
+                client.Connect(address, intPort);
+
+                // Retrieve the network stream.  
+                NetworkStream ns = client.GetStream();
+                MemoryStream frame = new MemoryStream();
+                image.Save(frame, ImageFormat.Png);
+
+                IFormatter formatter = new BinaryFormatter();
+
+                while (true)
+                {
+                    formatter.Serialize(ns, frame);
+                    Thread.Sleep(1000);
+                    //data.GetNewImage();
+                }
+            }
+            catch (Exception e)
+            {
+
             }
         }
 
@@ -142,11 +178,33 @@ namespace ScreenIOShare
 
         public Image receiveData()
         {
-            NetworkStream ns = client.GetStream();
+            /*NetworkStream ns = client.GetStream();
             Image receivedImage = Bitmap.FromStream(ns);
             //byte[] receivedData = 
             //ns.Write(receivedData, 0, receivedData.Length);
-            return receivedImage;
+            return receivedImage;*/
+            TcpListener listener = new TcpListener(address, port);
+            listener.Start();
+
+            try
+            {
+                using (TcpClient client = listener.AcceptTcpClient())
+                {
+                    NetworkStream ns = client.GetStream();
+
+                    IFormatter formatter = new BinaryFormatter();
+                    while (true)
+                    {
+                        MemoryStream receivedData = new MemoryStream();
+                        var receivedImage = formatter.Deserialize(ns);
+                        return receivedImage;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         public void handleData()
