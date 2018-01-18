@@ -56,7 +56,7 @@ namespace ScreenIOShare
             }
         }
 
-        void listener()
+        /*void listener()
         {
             try
             {
@@ -115,6 +115,16 @@ namespace ScreenIOShare
                 }
                 handler = null;
             }
+        }*/
+
+        void listener()
+        {
+
+        }
+
+        void handle()
+        {
+
         }
     }
 }

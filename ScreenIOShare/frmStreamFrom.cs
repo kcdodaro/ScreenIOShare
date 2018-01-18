@@ -132,7 +132,7 @@ namespace ScreenIOShare
             return strKey;
         }
 
-        void send()
+        /*void send()
         {
             try
             {
@@ -146,6 +146,22 @@ namespace ScreenIOShare
                 NetworkStream ns = client.GetStream();
                 ns.Write(buffer, 0, buffer.GetLength(0));
                 ns.Close();
+            }
+            catch (Exception e)
+            {
+                //insert logging here
+            }
+        }*/
+
+        void send()
+        {
+            try
+            {
+                MemoryStream ms = new MemoryStream();
+                sentImage.Save(ms, ImageFormat.Png);
+
+                byte[] buffer = new byte[ms.Length];
+                ms.Read(buffer, 0, (int)ms.Length);
             }
             catch (Exception e)
             {
