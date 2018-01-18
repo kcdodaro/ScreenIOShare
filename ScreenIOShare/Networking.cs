@@ -39,5 +39,36 @@ namespace ScreenIOShare
 
             return InternalIP;
         }
+
+        string getExternalIPAddress()
+        {
+            string ExtIPAddress = null;
+
+            WebRequest WRrequest = WebRequest.Create("http://checkip.dyndns.org");
+            WebResponse WRresponse = WRrequest.GetResponse();
+            using (Stream st = WRresponse.GetResponseStream())
+            {
+                StreamReader sr = new StreamReader(st);
+                string strResponse = sr.ReadToEnd().Trim();
+
+                List<char> response = strResponse.ToList<char>();
+
+                for (int i = 0; i < response.Count(); i++)
+                {
+                    if (!(Char.IsDigit(response[i])) && response[i] != '.')
+                    {
+                        response.RemoveAt(i);
+                        i = -1;
+                    }
+                }
+
+                for (int i = 0; i < response.Count(); i++)
+                {
+                    ExtIPAddress += response[i];
+                }
+            }
+
+            return ExtIPAddress;
+        }
     }
 }
