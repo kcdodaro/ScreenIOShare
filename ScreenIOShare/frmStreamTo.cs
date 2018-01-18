@@ -126,5 +126,11 @@ namespace ScreenIOShare
         {
 
         }
+
+        private void frmStreamTo_Load(object sender, EventArgs e)
+        {
+            Standards st = new Standards();
+            lblScreenHeight.Text = st.ScreenHeight.ToString();
+        }
     }
 }
