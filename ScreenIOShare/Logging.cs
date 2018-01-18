@@ -60,5 +60,17 @@ namespace ScreenIOShare
         {
             File.Create(path);
         }
+
+        public void logEvent(string Description)
+        {
+            string path = st.logFileLocation;
+            Description = DateTime.Now + ": " + Description;
+
+            using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
+            {
+                StreamWriter sw = new StreamWriter(fs);
+                sw.WriteLine(Description);
+            }
+        }
     }
 }
