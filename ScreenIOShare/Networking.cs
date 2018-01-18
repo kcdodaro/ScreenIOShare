@@ -120,17 +120,15 @@ namespace ScreenIOShare
             try
             {
                 client.Connect(address, intPort);
-
-                // Retrieve the network stream.  
+ 
                 NetworkStream ns = client.GetStream();
-                MemoryStream frame = new MemoryStream();
-                image.Save(frame, ImageFormat.Png);
+                Message msg = new Message(image);
 
                 IFormatter formatter = new BinaryFormatter();
 
                 while (true)
                 {
-                    formatter.Serialize(ns, frame);
+                    formatter.Serialize(ns, msg);
                     Thread.Sleep(1000);
                     //data.GetNewImage();
                 }
@@ -176,14 +174,28 @@ namespace ScreenIOShare
             
         }
 
-        public Image receiveData()
+        public Image receiveData(string address, string port)
         {
             /*NetworkStream ns = client.GetStream();
             Image receivedImage = Bitmap.FromStream(ns);
             //byte[] receivedData = 
             //ns.Write(receivedData, 0, receivedData.Length);
             return receivedImage;*/
-            TcpListener listener = new TcpListener(address, port);
+            Image receivedImage = null;
+
+            IPAddress ip = null;
+            int intPort = 0;
+            try
+            {
+                 ip = IPAddress.Parse(address);
+                intPort = int.Parse(port);
+            }       
+            catch (Exception e)
+            {
+                //insert logging here
+            }
+
+            TcpListener listener = new TcpListener(ip, intPort);
             listener.Start();
 
             try
@@ -195,9 +207,9 @@ namespace ScreenIOShare
                     IFormatter formatter = new BinaryFormatter();
                     while (true)
                     {
-                        MemoryStream receivedData = new MemoryStream();
-                        var receivedImage = formatter.Deserialize(ns);
-                        return receivedImage;
+                        Message receivedData = (Message)formatter.Deserialize(ns);
+                        receivedImage = receivedData.image;
+                        //insert logging of received image here
                     }
                 }
             }
@@ -205,11 +217,8 @@ namespace ScreenIOShare
             {
 
             }
-        }
 
-        public void handleData()
-        {
-
+            return receivedImage;
         }
     }
 }
