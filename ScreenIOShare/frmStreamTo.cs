@@ -52,8 +52,8 @@ namespace ScreenIOShare
                     streamedData.Show();
                 }*/
 
-                nt.clientConnect(strExternalIP, strPort);
-                picTest.Image = nt.receiveData();
+                //nt.clientConnect(strExternalIP, strPort);
+                picTest.Image = nt.receiveData(strExternalIP, strPort);
             }
             else
             {
