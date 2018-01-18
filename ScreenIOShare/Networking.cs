@@ -33,7 +33,6 @@ namespace ScreenIOShare
                 else
                 {
                     InternalIP = null;
-                    throw new InternalIPNotFound();
                 }
             }
 
