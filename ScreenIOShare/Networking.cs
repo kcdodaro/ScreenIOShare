@@ -70,5 +70,20 @@ namespace ScreenIOShare
 
             return ExtIPAddress;
         }
+
+        void sendData()
+        {
+
+        }
+
+        void receiveData()
+        {
+
+        }
+
+        void handleData()
+        {
+
+        }
     }
 }
