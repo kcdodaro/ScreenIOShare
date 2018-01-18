@@ -18,6 +18,8 @@ namespace ScreenIOShare
 {
     class Networking
     {
+        public bool isConnected { get; set; }
+
         public string getInternalIPAddress()
         {
             var hostName = Dns.GetHostEntry(Dns.GetHostName());
@@ -77,7 +79,7 @@ namespace ScreenIOShare
             return ExtIPAddress;
         }
 
-        void sendData(Bitmap image)
+        public void sendData(Bitmap image)
         {
             try
             {
@@ -119,16 +121,22 @@ namespace ScreenIOShare
             {
                 TcpClient client = new TcpClient();
                 client.Connect(Address, intPort);
+                isConnected = true;
                 //insert logging here of connection event
             }
-            catch
+            catch (Exception e)
             {
-
+                //insert logging here of unsuccesful attempt
             }
             
         }
 
-        void handleData()
+        public void receiveData()
+        {
+
+        }
+
+        public void handleData()
         {
 
         }

@@ -137,7 +137,7 @@ namespace ScreenIOShare
             lblPort.Text += st.Port.ToString();
             lblExtIPAddress.Text += nt.getExternalIPAddress();
             lblIntIPAddress.Text += nt.getInternalIPAddress();
-            lblIsConnected.Text += nt.
+            lblIsConnected.Text += nt.isConnected.ToString();
         }
     }
 }
