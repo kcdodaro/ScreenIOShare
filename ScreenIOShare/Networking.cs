@@ -77,9 +77,20 @@ namespace ScreenIOShare
             return ExtIPAddress;
         }
 
-        void sendData()
+        void sendData(Bitmap image)
         {
+            try
+            {
+                MemoryStream ms = new MemoryStream();
+                image.Save(ms, ImageFormat.Png);
 
+                byte[] buffer = new byte[ms.Length];
+                ms.Read(buffer, 0, (int)ms.Length);
+            }
+            catch (Exception e)
+            {
+                //insert logging here
+            }
         }
 
         void receiveData()

@@ -25,6 +25,9 @@ namespace ScreenIOShare
         string strExtIPAddress;
         string strIntIPAddress;
         Bitmap sentImage;
+
+        Standards st = new Standards();
+        Networking nt = new Networking();
         #endregion
 
         public frmStreamFrom()
@@ -39,16 +42,13 @@ namespace ScreenIOShare
             Form screen = new frmScreenOutput();
             screen.Show();
 
-            Thread listener = new Thread(send);
-            listener.Start();
+            //Thread listener = new Thread(send);
+            //listener.Start();
             sentImage = captureScreen();
         }
 
         private void frmStreamFrom_Load(object sender, EventArgs e)
         {
-            Standards st = new Standards();
-            Networking nt = new Networking();
-
             dblScreenHeight = SystemParameters.VirtualScreenHeight;
             dblScreenWidth = SystemParameters.VirtualScreenWidth;
             strIntIPAddress = nt.getInternalIPAddress().ToString();
@@ -94,22 +94,6 @@ namespace ScreenIOShare
                 //insert logging here
             }
         }*/
-
-        void send()
-        {
-            try
-            {
-                MemoryStream ms = new MemoryStream();
-                sentImage.Save(ms, ImageFormat.Png);
-
-                byte[] buffer = new byte[ms.Length];
-                ms.Read(buffer, 0, (int)ms.Length);
-            }
-            catch (Exception e)
-            {
-                //insert logging here
-            }
-        }
 
         Bitmap captureScreen()
         {
