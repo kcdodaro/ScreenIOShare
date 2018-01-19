@@ -18,7 +18,6 @@ namespace ScreenIOShare
     public partial class frmStreamTo : Form
     {
         #region globals
-        ArrayList sockets;
         string strExternalIP;
         string strInternalIP;
         string strPort;

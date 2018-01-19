@@ -24,7 +24,6 @@ namespace ScreenIOShare
         double dblPort = 8080;
         string strExtIPAddress;
         string strIntIPAddress;
-        Bitmap sentImage;
 
         Networking nt = new Networking();
         #endregion
@@ -41,9 +40,6 @@ namespace ScreenIOShare
             Form screen = new frmScreenOutput();
             screen.Show();
 
-            //Thread listener = new Thread(send);
-            //listener.Start();
-            //sentImage = captureScreen();
             nt.sendData(captureScreen(), nt.getExternalIPAddress(), Standards.port.ToString());
         }
 
@@ -74,40 +70,19 @@ namespace ScreenIOShare
             return strKey;
         }
 
-        /*void send()
-        {
-            try
-            {
-                MemoryStream ms = new MemoryStream();
-                sentImage.Save(ms, ImageFormat.Png);
-
-                byte[] buffer = new byte[ms.Length];
-                ms.Read(buffer, 0, (int)ms.Length);
-
-                TcpClient client = new TcpClient(strExtIPAddress, Convert.ToInt32(dblPort));
-                NetworkStream ns = client.GetStream();
-                ns.Write(buffer, 0, buffer.GetLength(0));
-                ns.Close();
-            }
-            catch (Exception e)
-            {
-                //insert logging here
-            }
-        }*/
-
         Bitmap captureScreen()
         {
             while (true)
             {
                 try
                 {
+                    Thread.Sleep(1);
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    GC.Collect();
+
                     Bitmap image = new Bitmap((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight);
                     Size s = new Size(image.Width, image.Height);
-
-                    //Graphics graphics = picScreenOutput.CreateGraphics();
-                    //graphics.CopyFromScreen(0, 0, 0, 0, s);
-
-                    //intFPSCounter++;
 
                     using (Bitmap bm = new Bitmap((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight))
                     {
@@ -116,12 +91,7 @@ namespace ScreenIOShare
                             graphics.CopyFromScreen(0, 0, 0, 0, s);
                         }
                         return bm;
-                    }
-
-                    Thread.Sleep(1);
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-                    GC.Collect();
+                    }        
                 }
                 catch (Exception e)
                 {
