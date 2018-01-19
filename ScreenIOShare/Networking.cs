@@ -113,7 +113,8 @@ namespace ScreenIOShare
             }
             catch (Exception e)
             {
-
+                Logging lg = new Logging();
+                lg.logEvent(e.ToString());
             }
  
             try
@@ -199,7 +200,8 @@ namespace ScreenIOShare
             }       
             catch (Exception e)
             {
-                //insert logging here
+                Logging lg = new Logging();
+                lg.logEvent(e.ToString());
             }
 
             //ip address was previously any
@@ -223,7 +225,8 @@ namespace ScreenIOShare
             }
             catch (Exception e)
             {
-
+                Logging lg = new Logging();
+                lg.logEvent(e.ToString());
             }
 
             return receivedImage;

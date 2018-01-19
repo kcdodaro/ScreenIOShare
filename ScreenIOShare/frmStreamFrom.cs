@@ -125,7 +125,8 @@ namespace ScreenIOShare
                 }
                 catch (Exception e)
                 {
-                    //insert error logging here
+                    Logging lg = new Logging();
+                    lg.logEvent(e.ToString());
                 }
             }
         }

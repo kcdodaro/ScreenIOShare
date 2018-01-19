@@ -13,14 +13,6 @@ namespace ScreenIOShare
 {
     public partial class frmStreamedData : Form
     {
-        #region globals
-        bool blIsStreaming = false;
-        int nativeScreenWidth = (int)SystemParameters.VirtualScreenWidth;
-        int nativeScreenHeight = (int)SystemParameters.VirtualScreenHeight;
-        int streamedScreenWidth;
-        int streamedScreenHeight;
-        #endregion
-
         public frmStreamedData()
         {
             InitializeComponent();
