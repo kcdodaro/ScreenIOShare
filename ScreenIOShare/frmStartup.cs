@@ -62,6 +62,8 @@ namespace ScreenIOShare
             Logging lg = new Logging();
 
             lg.checkDirectory(Standards.configFolderLocation, true);
+            lg.checkFile(Standards.logFileLocation, true);
+            lg.checkFile(Standards.configFileLocation, true);
         }
     }
 }

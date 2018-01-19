@@ -24,7 +24,7 @@ namespace ScreenIOShare
         public static int screenWidth = (int)SystemParameters.VirtualScreenWidth;
         public static int port = 8080;
         public static string configFolderLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "KCDev\\ScreenIOShare\\";
-        public static string configFileLocation = configFolderLocation + "config.txt";
+        public static string configFileLocation = configFolderLocation + "config.xml";
         public static string logFileLocation = configFolderLocation + "log.txt";
         public static string localExternalIP = nt.getExternalIPAddress();
         public static string localInternalIP = nt.getInternalIPAddress();
