@@ -20,9 +20,12 @@ namespace ScreenIOShare
 {
     class Networking
     {
+        #region globals
         public bool isConnected { get; set; }
         public TcpClient client = new TcpClient();
+        #endregion
 
+        #region information grabbing
         public string getInternalIPAddress()
         {
             var hostName = Dns.GetHostEntry(Dns.GetHostName());
@@ -81,7 +84,9 @@ namespace ScreenIOShare
 
             return ExtIPAddress;
         }
+        #endregion
 
+        #region data maniuplation
         public void sendData(Bitmap image, string address, string port)
         {
             int intPort = 0;
@@ -98,31 +103,10 @@ namespace ScreenIOShare
  
             try
             {
-                TcpClient client = new TcpClient();
-                client.Connect(address, intPort);
-                NetworkStream ns = client.GetStream();
-
-                while (client.Connected)
-                {
-                    
-                    Message msg = new Message(image);
-
-                    IFormatter formatter = new BinaryFormatter();
-
-                    while (true)
-                    {
-                        formatter.Serialize(ns, msg);
-                        Thread.Sleep(1000);
-                        //data.GetNewImage();
-                    }
-                }
-
-                ns.Close();
-                client.Close();
+                
             }
             catch (Exception e)
             {
-                System.Windows.MessageBox.Show(e.ToString());
                 Logging lg = new Logging();
                 lg.logEvent(e.ToString());
             }  
@@ -136,7 +120,7 @@ namespace ScreenIOShare
             int intPort = 0;
             try
             {
-                 ip = IPAddress.Parse(address);
+                ip = IPAddress.Parse(address);
                 intPort = int.Parse(port);
             }       
             catch (Exception e)
@@ -145,24 +129,9 @@ namespace ScreenIOShare
                 lg.logEvent(e.ToString());
             }
 
-            //ip address was previously any
-            TcpListener listener = new TcpListener(IPAddress.Any, intPort);
-            listener.Start();
-
             try
             {
-                using (TcpClient client = listener.AcceptTcpClient())
-                {
-                    NetworkStream ns = client.GetStream();
-
-                    IFormatter formatter = new BinaryFormatter();
-                    while (true)
-                    {
-                        Message receivedData = (Message)formatter.Deserialize(ns);
-                        receivedImage = receivedData.image;
-                        //insert logging of received image here
-                    }
-                }
+                
             }
             catch (Exception e)
             {
@@ -172,5 +141,6 @@ namespace ScreenIOShare
 
             return receivedImage;
         }
+        #endregion
     }
 }
