@@ -9,8 +9,6 @@ namespace ScreenIOShare
 {
     class Logging
     {
-        Standards st = new Standards();
-
         public bool checkDirectory(string path, bool shouldCreateDirectory)
         {
             if (shouldCreateDirectory)
@@ -63,7 +61,7 @@ namespace ScreenIOShare
 
         public void logEvent(string Description)
         {
-            string path = st.logFileLocation;
+            string path = Standards.logFileLocation;
             Description = DateTime.Now + ": " + Description;
 
             using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))

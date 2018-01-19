@@ -24,7 +24,6 @@ namespace ScreenIOShare
         string strPort;
         string strKey;
         Networking nt = new Networking();
-        Standards st = new Standards();
         #endregion
 
         public frmStreamTo()
@@ -134,12 +133,11 @@ namespace ScreenIOShare
 
         private void frmStreamTo_Load(object sender, EventArgs e)
         {
-            Standards st = new Standards();
             Networking nt = new Networking();
 
-            lblScreenHeight.Text += st.screenHeight.ToString();
-            lblScreenWidth.Text += st.screenWidth.ToString();
-            lblPort.Text += st.port.ToString();
+            lblScreenHeight.Text += Standards.screenHeight.ToString();
+            lblScreenWidth.Text += Standards.screenWidth.ToString();
+            lblPort.Text += Standards.port.ToString();
             lblExtIPAddress.Text += nt.getExternalIPAddress();
             lblIntIPAddress.Text += nt.getInternalIPAddress();
             lblIsConnected.Text += nt.isConnected.ToString();

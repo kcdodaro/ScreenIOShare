@@ -16,17 +16,17 @@ using System.Drawing.Imaging;
 
 namespace ScreenIOShare
 {
-    class Standards
+    static class Standards
     {
         static Networking nt = new Networking();
 
-        public int screenHeight = (int)SystemParameters.VirtualScreenHeight;
-        public int screenWidth = (int)SystemParameters.VirtualScreenWidth;
-        public int port = 8080;
+        public static int screenHeight = (int)SystemParameters.VirtualScreenHeight;
+        public static int screenWidth = (int)SystemParameters.VirtualScreenWidth;
+        public static int port = 8080;
         public static string configFolderLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "KCDev\\ScreenIOShare\\";
         public static string configFileLocation = configFolderLocation + "config.txt";
-        public string logFileLocation = configFolderLocation + "log.txt";
-        public string localExternalIP = nt.getExternalIPAddress();
-        public string localInternalIP = nt.getInternalIPAddress();
+        public static string logFileLocation = configFolderLocation + "log.txt";
+        public static string localExternalIP = nt.getExternalIPAddress();
+        public static string localInternalIP = nt.getInternalIPAddress();
     }
 }

@@ -63,6 +63,7 @@
             this.Controls.Add(this.btnStreamFrom);
             this.Name = "frmStartup";
             this.Text = "frmStartup";
+            this.Load += new System.EventHandler(this.frmStartup_Load);
             this.ResumeLayout(false);
 
         }

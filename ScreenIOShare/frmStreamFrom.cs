@@ -26,7 +26,6 @@ namespace ScreenIOShare
         string strIntIPAddress;
         Bitmap sentImage;
 
-        Standards st = new Standards();
         Networking nt = new Networking();
         #endregion
 
@@ -45,7 +44,7 @@ namespace ScreenIOShare
             //Thread listener = new Thread(send);
             //listener.Start();
             //sentImage = captureScreen();
-            nt.sendData(captureScreen(), nt.getExternalIPAddress(), st.port.ToString());
+            nt.sendData(captureScreen(), nt.getExternalIPAddress(), Standards.port.ToString());
         }
 
         private void frmStreamFrom_Load(object sender, EventArgs e)
