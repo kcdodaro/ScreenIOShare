@@ -21,6 +21,7 @@ namespace ScreenIOShare
     {
         public Image image { get; set; }
         public DateTime timeSent { get; set; }
+        public int key { get; set; }
 
         public Message(Image data)
         {
