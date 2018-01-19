@@ -64,6 +64,7 @@ namespace ScreenIOShare
             lg.checkDirectory(Standards.configFolderLocation, true);
             lg.checkFile(Standards.logFileLocation, true);
             lg.checkFile(Standards.configFileLocation, true);
+            lg.checkFile(Standards.errorFileLocation, true);
         }
     }
 }
