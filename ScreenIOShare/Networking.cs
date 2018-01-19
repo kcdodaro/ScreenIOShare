@@ -84,27 +84,6 @@ namespace ScreenIOShare
 
         public void sendData(Bitmap image, string address, string port)
         {
-            /*try
-            {
-                //MemoryStream ms = new MemoryStream();
-                //image.Save(ms, ImageFormat.Png);
-
-                //byte[] buffer = new byte[ms.Length];
-                //ms.Read(buffer, 0, (int)ms.Length);
-                int intPort = int.Parse(port);
-                TcpListener server = new TcpListener(IPAddress.Any, intPort);
-                TcpClient client = server.AcceptTcpClient();
-
-                MemoryStream ms = new MemoryStream();
-                image.Save(ms, ImageFormat.Png);
-                byte[] buffer = ms.ToArray();
-                client.Client.Send(buffer);
-                client.Close();
-            }
-            catch (Exception e)
-            {
-                //insert logging here
-            }*/
             int intPort = 0;
 
             try
@@ -144,51 +123,13 @@ namespace ScreenIOShare
             catch (Exception e)
             {
                 System.Windows.MessageBox.Show(e.ToString());
+                Logging lg = new Logging();
+                lg.logEvent(e.ToString());
             }  
         }
 
-        /*public void clientConnect(string Address, string port)
-        {
-            double ip = 0;
-            int intPort = 0;
-
-            try
-            {
-                intPort = int.Parse(port);
-            }
-            catch (Exception e)
-            {
-                //logging here
-            }
-
-            //bool isNumeric = double.TryParse(Address, out ip);
-
-            /*if (isNumeric)
-            {
-                TcpClient client = new TcpClient();
-                client.Connect(IPAddress.Parse(Address), intPort);
-            }* /
-
-            try
-            {
-                client.Connect(Address, intPort);
-                isConnected = true;
-                //insert logging here of connection event
-            }
-            catch (Exception e)
-            {
-                //insert logging here of unsuccesful attempt
-            }
-            
-        }*/
-
         public Image receiveData(string address, string port)
         {
-            /*NetworkStream ns = client.GetStream();
-            Image receivedImage = Bitmap.FromStream(ns);
-            //byte[] receivedData = 
-            //ns.Write(receivedData, 0, receivedData.Length);
-            return receivedImage;*/
             Image receivedImage = null;
 
             IPAddress ip = null;
