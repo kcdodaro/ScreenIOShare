@@ -61,7 +61,7 @@ namespace ScreenIOShare
 
         public void logEvent(string Description)
         {
-            string path = Standards.logFileLocation;
+            string path = Standards.errorFileLocation;
             Description = DateTime.Now + ": " + Description;
 
             using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
