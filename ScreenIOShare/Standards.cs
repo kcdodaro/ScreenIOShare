@@ -18,11 +18,15 @@ namespace ScreenIOShare
 {
     class Standards
     {
-        public int ScreenHeight = (int)SystemParameters.VirtualScreenHeight;
-        public int ScreenWidth = (int)SystemParameters.VirtualScreenWidth;
-        public int Port = 8080;
+        static Networking nt = new Networking();
+
+        public int screenHeight = (int)SystemParameters.VirtualScreenHeight;
+        public int screenWidth = (int)SystemParameters.VirtualScreenWidth;
+        public int port = 8080;
         public static string configFolderLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "KCDev\\ScreenIOShare\\";
         public static string configFileLocation = configFolderLocation + "config.txt";
         public string logFileLocation = configFolderLocation + "log.txt";
+        public string localExternalIP = nt.getExternalIPAddress();
+        public string localInternalIP = nt.getInternalIPAddress();
     }
 }

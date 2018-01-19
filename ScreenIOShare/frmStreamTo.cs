@@ -53,7 +53,7 @@ namespace ScreenIOShare
                 }*/
 
                 //nt.clientConnect(strExternalIP, strPort);
-                picTest.Image = nt.receiveData(strExternalIP, strPort);
+                picTest.Image = nt.receiveData(strInternalIP, strPort);
             }
             else
             {
@@ -137,9 +137,9 @@ namespace ScreenIOShare
             Standards st = new Standards();
             Networking nt = new Networking();
 
-            lblScreenHeight.Text += st.ScreenHeight.ToString();
-            lblScreenWidth.Text += st.ScreenWidth.ToString();
-            lblPort.Text += st.Port.ToString();
+            lblScreenHeight.Text += st.screenHeight.ToString();
+            lblScreenWidth.Text += st.screenWidth.ToString();
+            lblPort.Text += st.port.ToString();
             lblExtIPAddress.Text += nt.getExternalIPAddress();
             lblIntIPAddress.Text += nt.getInternalIPAddress();
             lblIsConnected.Text += nt.isConnected.ToString();

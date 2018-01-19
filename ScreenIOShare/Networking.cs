@@ -115,31 +115,38 @@ namespace ScreenIOShare
             {
 
             }
-
-            TcpClient client = new TcpClient();
+ 
             try
             {
+                TcpClient client = new TcpClient();
                 client.Connect(address, intPort);
- 
                 NetworkStream ns = client.GetStream();
-                Message msg = new Message(image);
 
-                IFormatter formatter = new BinaryFormatter();
-
-                while (true)
+                while (client.Connected)
                 {
-                    formatter.Serialize(ns, msg);
-                    Thread.Sleep(1000);
-                    //data.GetNewImage();
+                    
+                    Message msg = new Message(image);
+
+                    IFormatter formatter = new BinaryFormatter();
+
+                    while (true)
+                    {
+                        formatter.Serialize(ns, msg);
+                        Thread.Sleep(1000);
+                        //data.GetNewImage();
+                    }
                 }
+
+                ns.Close();
+                client.Close();
             }
             catch (Exception e)
             {
-
-            }
+                System.Windows.MessageBox.Show(e.ToString());
+            }  
         }
 
-        public void clientConnect(string Address, string port)
+        /*public void clientConnect(string Address, string port)
         {
             double ip = 0;
             int intPort = 0;
@@ -159,7 +166,7 @@ namespace ScreenIOShare
             {
                 TcpClient client = new TcpClient();
                 client.Connect(IPAddress.Parse(Address), intPort);
-            }*/
+            }* /
 
             try
             {
@@ -172,7 +179,7 @@ namespace ScreenIOShare
                 //insert logging here of unsuccesful attempt
             }
             
-        }
+        }*/
 
         public Image receiveData(string address, string port)
         {
@@ -195,7 +202,8 @@ namespace ScreenIOShare
                 //insert logging here
             }
 
-            TcpListener listener = new TcpListener(ip, intPort);
+            //ip address was previously any
+            TcpListener listener = new TcpListener(IPAddress.Any, intPort);
             listener.Start();
 
             try
