@@ -20,11 +20,6 @@ namespace ScreenIOShare
 {
     class Networking
     {
-        #region globals
-        public bool isConnected { get; set; }
-        public TcpClient client = new TcpClient();
-        #endregion
-
         #region information grabbing
         public string getInternalIPAddress()
         {
@@ -116,9 +111,9 @@ namespace ScreenIOShare
             }  
         }
 
-        public Image receiveData(string address, string port)
+        public Bitmap receiveData(string address, string port)
         {
-            Image receivedImage = null;
+            Bitmap receivedImage = null;
             IPAddress ip = null;
             int intPort = 0;
             bool done = false;
@@ -141,7 +136,7 @@ namespace ScreenIOShare
                 while (!done)
                 {
                     byte[] returnedData = listener.Receive(ref endPoint);
-                    return bytesToImage(returnedData);
+                    return bytesToBitmap(returnedData);
                 }
             }
             catch (Exception e)
@@ -157,20 +152,22 @@ namespace ScreenIOShare
             return receivedImage;
         }
 
-        public byte[] imageToBytes(Image img)
+        public byte[] imageToBytes(Bitmap img)
         {
+            byte[] buffer;
             using (MemoryStream ms = new MemoryStream())
             {
-                img.Save(ms, ImageFormat.Png);
-                return ms.ToArray();
+                img.Save(ms, ImageFormat.Bmp);
+                buffer = ms.ToArray();
             }
+            return buffer;
         }
 
-        public Image bytesToImage(byte[] buffer)
+        public Bitmap bytesToBitmap(byte[] buffer)
         {
             using (MemoryStream ms = new MemoryStream(buffer))
             {
-                return Image.FromStream(ms);
+                return (Bitmap)Image.FromStream(ms);
             }
         }
         #endregion

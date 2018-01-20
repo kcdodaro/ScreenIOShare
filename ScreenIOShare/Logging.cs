@@ -68,6 +68,7 @@ namespace ScreenIOShare
             {
                 StreamWriter sw = new StreamWriter(fs);
                 sw.WriteLine(Description);
+                sw.Close();
             }
         }
     }
