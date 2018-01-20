@@ -70,37 +70,6 @@ namespace ScreenIOShare
             return strKey;
         }
 
-        /*Bitmap captureScreen()
-        {
-            while (true)
-            {
-                try
-                {
-                    Thread.Sleep(1);
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-                    GC.Collect();
-
-                    Bitmap image = new Bitmap((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight);
-                    Size s = new Size(image.Width, image.Height);
-
-                    using (Bitmap bm = new Bitmap((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight))
-                    {
-                        using (Graphics graphics = Graphics.FromImage(image))
-                        {
-                            graphics.CopyFromScreen(0, 0, 0, 0, s);
-                        }
-                        return bm;
-                    }        
-                }
-                catch (Exception e)
-                {
-                    Logging lg = new Logging();
-                    lg.logEvent(e.ToString());
-                }
-            }
-        }*/
-
         Bitmap captureScreen()
         {
             Bitmap image = new Bitmap((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight);
