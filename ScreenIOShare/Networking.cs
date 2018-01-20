@@ -103,7 +103,11 @@ namespace ScreenIOShare
  
             try
             {
-                
+                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+                IPAddress ip = IPAddress.Parse(address);
+                byte[] buffer = imageToBytes(image);
+                IPEndPoint endPoint = new IPEndPoint(ip, intPort);
+                sock.SendTo(buffer, endPoint);
             }
             catch (Exception e)
             {
@@ -115,9 +119,12 @@ namespace ScreenIOShare
         public Image receiveData(string address, string port)
         {
             Image receivedImage = null;
-
             IPAddress ip = null;
             int intPort = 0;
+            bool done = false;
+            UdpClient listener = new UdpClient(intPort);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, intPort);
+
             try
             {
                 ip = IPAddress.Parse(address);
@@ -131,15 +138,40 @@ namespace ScreenIOShare
 
             try
             {
-                
+                while (!done)
+                {
+                    byte[] returnedData = listener.Receive(ref endPoint);
+                    return bytesToImage(returnedData);
+                }
             }
             catch (Exception e)
             {
                 Logging lg = new Logging();
                 lg.logEvent(e.ToString());
             }
+            finally
+            {
+                listener.Close();
+            }
 
             return receivedImage;
+        }
+
+        public byte[] imageToBytes(Image img)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                img.Save(ms, ImageFormat.Png);
+                return ms.ToArray();
+            }
+        }
+
+        public Image bytesToImage(byte[] buffer)
+        {
+            using (MemoryStream ms = new MemoryStream(buffer))
+            {
+                return Image.FromStream(ms);
+            }
         }
         #endregion
     }
