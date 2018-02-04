@@ -103,14 +103,14 @@
             // enterToolStripMenuItem
             // 
             this.enterToolStripMenuItem.Name = "enterToolStripMenuItem";
-            this.enterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.enterToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.enterToolStripMenuItem.Text = "Enter";
             this.enterToolStripMenuItem.Click += new System.EventHandler(this.enterToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(101, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 

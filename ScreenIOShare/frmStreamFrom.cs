@@ -40,7 +40,10 @@ namespace ScreenIOShare
             //Form screen = new frmScreenOutput();
             //screen.Show();
 
-            nt.sendData(captureScreen(), nt.getExternalIPAddress(), Standards.port.ToString());
+            while (true)
+            {
+                nt.sendData(captureScreen(), nt.getExternalIPAddress(), Standards.port.ToString());
+            }
         }
 
         private void frmStreamFrom_Load(object sender, EventArgs e)
@@ -70,9 +73,9 @@ namespace ScreenIOShare
             return strKey;
         }
 
-        Bitmap captureScreen()
+        Graphics captureScreen()
         {
-            Bitmap image = new Bitmap((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight);
+            /*Bitmap image = new Bitmap((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight);
             Size s = new Size(image.Width, image.Height);
 
             using (Bitmap bm = new Bitmap((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight))
@@ -82,7 +85,23 @@ namespace ScreenIOShare
                     graphics.CopyFromScreen(0, 0, 0, 0, s);
                 }
                 return bm;
-            }
+            }*/
+
+            Bitmap image = new Bitmap((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight);
+            Size s = new Size(image.Width, image.Height);
+
+            //Graphics graphics = picScreenOutput.CreateGraphics();
+            //graphics.CopyFromScreen(0, 0, 0, 0, s);
+            Graphics graphics = this.CreateGraphics();
+            graphics.CopyFromScreen(0, 0, 0, 0, s);
+
+            return graphics;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Graphics gp = pic.CreateGraphics();
+            gp = captureScreen();
         }
     }
 }

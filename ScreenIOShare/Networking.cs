@@ -111,6 +111,35 @@ namespace ScreenIOShare
             }  
         }
 
+        public void sendData(Graphics image, string address, string port)
+        {
+            int intPort = 0;
+
+            try
+            {
+                intPort = int.Parse(port);
+            }
+            catch (Exception e)
+            {
+                Logging lg = new Logging();
+                lg.logEvent(e.ToString());
+            }
+
+            try
+            {
+                Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+                IPAddress ip = IPAddress.Parse(address);
+                byte[] buffer = graphicsToBytes(image);
+                IPEndPoint endPoint = new IPEndPoint(ip, intPort);
+                sock.SendTo(buffer, endPoint);
+            }
+            catch (Exception e)
+            {
+                Logging lg = new Logging();
+                lg.logEvent(e.ToString());
+            }
+        }
+
         public Bitmap receiveData(string address, string port)
         {
             Bitmap receivedImage = null;
@@ -152,6 +181,47 @@ namespace ScreenIOShare
             return receivedImage;
         }
 
+        public Graphics receieveData(string address, string port)
+        {
+            Graphics receivedImage = null;
+            IPAddress ip = null;
+            int intPort = 0;
+            bool done = false;
+            UdpClient listener = new UdpClient(intPort);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, intPort);
+
+            try
+            {
+                ip = IPAddress.Parse(address);
+                intPort = int.Parse(port);
+            }
+            catch (Exception e)
+            {
+                Logging lg = new Logging();
+                lg.logEvent(e.ToString());
+            }
+
+            try
+            {
+                while (!done)
+                {
+                    byte[] returnedData = listener.Receive(ref endPoint);
+                    return bytesToGraphics(returnedData);
+                }
+            }
+            catch (Exception e)
+            {
+                Logging lg = new Logging();
+                lg.logEvent(e.ToString());
+            }
+            finally
+            {
+                listener.Close();
+            }
+
+            return receivedImage;
+        }
+
         public byte[] imageToBytes(Bitmap img)
         {
             byte[] buffer;
@@ -169,6 +239,28 @@ namespace ScreenIOShare
             {
                 return (Bitmap)Image.FromStream(ms);
             }
+        }
+
+        public Graphics bytesToGraphics(byte[] buffer)
+        {
+            using (MemoryStream ms = new MemoryStream(buffer))
+            {
+                return Graphics.FromImage(Image.FromStream(ms));
+            }
+        }
+
+        public byte[] graphicsToBytes(Graphics img)
+        {
+            /*byte[] buffer;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                img.Save(ms, ImageFormat.Bmp);
+                buffer = ms.ToArray();
+            }
+            return buffer;*/
+            ImageConverter ic = new ImageConverter();
+            byte[] buffer = (byte[])ic.ConvertTo(img, typeof(byte[]));
+            return buffer;
         }
         #endregion
     }
